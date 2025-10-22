@@ -11,9 +11,14 @@ public class GestorTareas {
     }
 
     public void agregarTarea(String descripcion) {
+    if (descripcion.trim().isEmpty()) {
+        System.out.println("La descripción no puede estar vacía.");
+        return;
+    }
     tareas.add(new Tarea(descripcion));
-    System.out.println("✅ Tarea agregada.");
+    System.out.println("Tarea agregada.");
 }
+
 
 
     public void listarTareas() {
@@ -32,12 +37,12 @@ public class GestorTareas {
             return;
         }
         tareas.get(indice - 1).marcarCompletada();
-        System.out.println("✅ Tarea marcada como completada.");
+        System.out.println("Tarea marcada como completada.");
     }
 
     public void eliminarCompletadas() {
         tareas.removeIf(Tarea::estaCompletada);
-        System.out.println("🧹 Tareas completadas eliminadas.");
+        System.out.println("Tareas completadas eliminadas.");
     }
 
     public void guardarEnArchivo() {
